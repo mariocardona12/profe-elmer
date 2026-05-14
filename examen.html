@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otaku Figures Shop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#0f0f1a;
+      color:white;
+    }
+
+    header{
+      background:linear-gradient(90deg,#ff0080,#7928ca,#00c6ff);
+      padding:25px;
+      text-align:center;
+    }
+
+    header h1{
+      font-size:50px;
+    }
+
+    nav{
+      background:#151525;
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      padding:18px;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#ff4dd2;
+    }
+
+    section{
+      padding:60px 30px;
+    }
+
+    .titulo{
+      text-align:center;
+      font-size:40px;
+      margin-bottom:40px;
+      color:#ff66cc;
+    }
+
+    .productos{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#1c1c2e;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      box-shadow:0 0 20px rgba(255,0,150,.2);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(255,0,150,.7);
+    }
+
+    .card img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+    }
+
+    .info{
+      padding:20px;
+      text-align:center;
+    }
+
+    .info h3{
+      margin-bottom:10px;
+      color:#ffb3ec;
+    }
+
+    .price{
+      color:#00ffd5;
+      font-size:25px;
+      margin:15px 0;
+    }
+
+    .btn{
+      background:#ff0080;
+      color:white;
+      border:none;
+      padding:12px 20px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#7928ca;
+    }
+
+    #carrito{
+      position:fixed;
+      right:20px;
+      top:100px;
+      background:#1b1b2f;
+      width:300px;
+      padding:20px;
+      border-radius:15px;
+      box-shadow:0 0 20px rgba(255,0,150,.5);
+    }
+
+    #carrito h2{
+      text-align:center;
+      margin-bottom:20px;
+      color:#ff66cc;
+    }
+
+    #lista-carrito{
+      list-style:none;
+      margin-bottom:20px;
+    }
+
+    #lista-carrito li{
+      margin-bottom:10px;
+      border-bottom:1px solid #444;
+      padding-bottom:5px;
+    }
+
+    #total{
+      font-size:22px;
+      color:#00ffd5;
+      margin-bottom:15px;
+    }
+
+    footer{
+      text-align:center;
+      background:#151525;
+      padding:30px;
+      margin-top:50px;
+      color:#aaa;
+    }
+
+  </style>
+</head>
+<body>
+
+<header id="inicio">
+  <h1>🔥 OTAKU FIGURES SHOP 🔥</h1>
+  <p>Las mejores figuras anime del mundo</p>
+</header>
+
+<!-- BARRA DE NAVEGACIÓN -->
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#figuras">Figuras</a>
+  <a href="#ofertas">Ofertas</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<!-- PRODUCTOS -->
+<section id="figuras">
+  <h2 class="titulo">⭐ Figuras Disponibles ⭐</h2>
+
+  <div class="productos">
+
+    <!-- PRODUCTO 1 -->
+    <div class="card">
+      <img src="img/naruto.png">
+      <div class="info">
+        <h3>Figura Naruto</h3>
+        <p class="price">Q350.99</p>
+        <button class="btn" onclick="agregarCarrito('Figura Naruto',50)">Comprar</button>
+      </div>
+    </div>
+
+    <!-- PRODUCTO 2 -->
+    <div class="card">
+      <img src="img/goku.png">
+      <div class="info">
+        <h3>Figura Goku</h3>
+        <p class="price">Q299.99</p>
+        <button class="btn" onclick="agregarCarrito('Figura Goku',70)">Comprar</button>
+      </div>
+    </div>
+
+    <!-- PRODUCTO 3 -->
+    <div class="card">
+      <img src="img/cyberninja.jpg">
+      <div class="info">
+        <h3>Cyber Ninja</h3>
+        <p class="price">Q199.99</p>
+        <button class="btn" onclick="agregarCarrito('Cyber Ninja',80)">Comprar</button>
+      </div>
+    </div>
+
+    <!-- PRODUCTO 4 -->
+    <div class="card">
+      <img src="img/dragon hero.jpg">
+      <div class="info">
+        <h3>Dragon Hero</h3>
+        <p class="price">Q99.99</p>
+        <button class="btn" onclick="agregarCarrito('Dragon Hero',90)">Comprar</button>
+      </div>
+    </div>
+
+    <!-- PRODUCTO 5 -->
+    <div class="card">
+      <img src="img/luffy gear.jpg">
+      <div class="info">
+        <h3>Figura Luffy</h3>
+        <p class="price">Q399.99</p>
+        <button class="btn" onclick="agregarCarrito('Figura Luffy',65)">Comprar</button>
+      </div>
+    </div>
+
+    <!-- PRODUCTO 6 -->
+    <div class="card">
+      <img src="img/tanjiro.jpg">
+      <div class="info">
+        <h3>Figura Tanjiro</h3>
+        <p class="price">Q499.99</p>
+        <button class="btn" onclick="agregarCarrito('Figura Tanjiro',75)">Comprar</button>
+      </div>
+    </div>
+
+    <!-- AGREGA ESTAS FIGURAS DENTRO DE <div class="productos"> -->
+
+<!-- FIGURA 7 -->
+<div class="card">
+  <img src="img/susake.jpg">
+  <div class="info">
+    <h3>Figura Sasuke</h3>
+    <p class="price">Q89.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Sasuke',60)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 8 -->
+<div class="card">
+  <img src="img/itachi.jpg">
+  <div class="info">
+    <h3>Figura Itachi</h3>
+    <p class="price">Q599.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Itachi',85)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 9 -->
+<div class="card">
+  <img src="img/vegeta.jpg">
+  <div class="info">
+    <h3>Figura Vegeta</h3>
+    <p class="price">Q899.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Vegeta',78)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 10 -->
+<div class="card">
+  <img src="img/gojo.jpeg">
+  <div class="info">
+    <h3>Figura Gojo</h3>
+    <p class="price">Q89.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Gojo',92)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 11 -->
+<div class="card">
+  <img src="img/sukuna.jpg">
+  <div class="info">
+    <h3>Figura Sukuna</h3>
+    <p class="price">Q59.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Sukuna',95)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 12 -->
+<div class="card">
+  <img src="img/levi.jpg">
+  <div class="info">
+    <h3>Figura Levi</h3>
+    <p class="price">Q59.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Levi',88)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 13 -->
+<div class="card">
+  <img src="img/eren.jpg">
+  <div class="info">
+    <h3>Figura Eren</h3>
+    <p class="price">Q299.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Eren',82)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 14 -->
+<div class="card">
+  <img src="img/mikasa.jpg">
+  <div class="info">
+    <h3>Figura Mikasa</h3>
+    <p class="price">Q499.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Mikasa',77)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 15 -->
+<div class="card">
+  <img src="img/zoro.jpg">
+  <div class="info">
+    <h3>Figura Zoro</h3>
+    <p class="price">Q699.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Zoro',89)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 16 -->
+<div class="card">
+  <img src="img/sanji.jpg">
+  <div class="info">
+    <h3>Figura Sanji</h3>
+    <p class="price">Q459.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Sanji',74)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 17 -->
+<div class="card">
+  <img src="img/nami.jpg">
+  <div class="info">
+    <h3>Figura Nami</h3>
+    <p class="price">Q589.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Nami',70)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 18 -->
+<div class="card">
+  <img src="img/robin.jpg">
+  <div class="info">
+    <h3>Figura Robin</h3>
+    <p class="price">Q200.00</p>
+    <button class="btn" onclick="agregarCarrito('Figura Robin',83)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 19 -->
+<div class="card">
+  <img src="img/ichigo.jpg">
+  <div class="info">
+    <h3>Figura Ichigo</h3>
+    <p class="price">Q699.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Ichigo',86)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 20 -->
+<div class="card">
+  <img src="img/rukia.jpg">
+  <div class="info">
+    <h3>Figura Rukia</h3>
+    <p class="price">Q599.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Rukia',72)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 21 -->
+<div class="card">
+  <img src="img/asta.jpg">
+  <div class="info">
+    <h3>Figura Asta</h3>
+    <p class="price">Q89.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Asta',80)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 22 -->
+<div class="card">
+  <img src="img/yuno.jpg">
+  <div class="info">
+    <h3>Figura Yuno</h3>
+    <p class="price">Q89.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Yuno',76)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 23 -->
+<div class="card">
+  <img src="img/deku.jpg">
+  <div class="info">
+    <h3>Figura Deku</h3>
+    <p class="price">Q69.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Deku',73)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 24 -->
+<div class="card">
+  <img src="img/bakugo.jpg">
+  <div class="info">
+    <h3>Figura Bakugo</h3>
+    <p class="price">Q589.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Bakugo',79)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 25 -->
+<div class="card">
+  <img src="img/todoroki.jpg">
+  <div class="info">
+    <h3>Figura Todoroki</h3>
+    <p class="price">Q500.00</p>
+    <button class="btn" onclick="agregarCarrito('Figura Todoroki',84)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 26 -->
+<div class="card">
+  <img src="img/killua.jpg">
+  <div class="info">
+    <h3>Figura Killua</h3>
+    <p class="price">Q900.00</p>
+    <button class="btn" onclick="agregarCarrito('Figura Killua',90)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 27 -->
+<div class="card">
+  <img src="img/gon.jpg">
+  <div class="info">
+    <h3>Figura Gon</h3>
+    <p class="price">Q699.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Gon',69)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 28 -->
+<div class="card">
+  <img src="img/hisoka.jpg">
+  <div class="info">
+    <h3>Figura Hisoka</h3>
+    <p class="price">Q799.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Hisoka',93)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 29 -->
+<div class="card">
+  <img src="img/nezuko.jpg">
+  <div class="info">
+    <h3>Figura Nezuko</h3>
+    <p class="price">Q599.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Nezuko',68)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 30 -->
+<div class="card">
+  <img src="img/zenitsu.jpg">
+  <div class="info">
+    <h3>Figura Zenitsu</h3>
+    <p class="price">Q699.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Zenitsu',71)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 31 -->
+<div class="card">
+  <img src="img/inosuke.jpg">
+  <div class="info">
+    <h3>Figura Inosuke</h3>
+    <p class="price">Q80.00</p>
+    <button class="btn" onclick="agregarCarrito('Figura Inosuke',87)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 32 -->
+<div class="card">
+  <img src="img/meliodas.jpg">
+  <div class="info">
+    <h3>Figura Meliodas</h3>
+    <p class="price">Q500.00</p>
+    <button class="btn" onclick="agregarCarrito('Figura Meliodas',94)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 33 -->
+<div class="card">
+  <img src="img/escanor.jpg">
+  <div class="info">
+    <h3>Figura Escanor</h3>
+    <p class="price">Q700.00</p>
+    <button class="btn" onclick="agregarCarrito('Figura Escanor',99)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 34 -->
+<div class="card">
+  <img src="img/ban.jpg">
+  <div class="info">
+    <h3>Figura Ban</h3>
+    <p class="price">Q900.00</p>
+    <button class="btn" onclick="agregarCarrito('Figura Ban',81)">Comprar</button>
+  </div>
+</div>
+
+<!-- FIGURA 35 -->
+<div class="card">
+  <img src="img/rimuru.jpg">
+  <div class="info">
+    <h3>Figura Rimuru</h3>
+    <p class="price">Q599.99</p>
+    <button class="btn" onclick="agregarCarrito('Figura Rimuru',96)">Comprar</button>
+  </div>
+</div>
+  </div>
+</section>
+
+  <center>
+   <!-- OFERTAS -->
+<section id="ofertas">
+  <h2 class="titulo">⚡ Ofertas Especiales ⚡</h2>
+
+  <div class="productos">
+
+    <!-- OFERTA 1 -->
+    <div class="card">
+      <img src="img/vegeta y goku.jpg">
+      <div class="info">
+        <h3>🔥 Pack Goku + Vegeta</h3>
+        <p>Obtén 2 figuras épicas con descuento especial</p>
+        <p class="price">Antes: Q1200</p>
+        <p class="price">Ahora: Q899.99</p>
+        <button class="btn">Comprar Oferta</button>
+      </div>
+    </div>
+
+    <!-- OFERTA 2 -->
+    <div class="card">
+      <img src="img/naruto ofertas.jpg">
+      <div class="info">
+        <h3>⚡ Naruto Collection</h3>
+        <p>Naruto + Sasuke + Itachi edición limitada</p>
+        <p class="price">Antes: Q1500</p>
+        <p class="price">Ahora: Q1099.99</p>
+        <button class="btn">Comprar Oferta</button>
+      </div>
+    </div>
+
+    <!-- OFERTA 3 -->
+    <div class="card">
+      <img src="img/oferta one piece.jpg">
+      <div class="info">
+        <h3>🏴‍☠️ Pack One Piece</h3>
+        <p>Luffy + Zoro + Sanji en promoción</p>
+        <p class="price">Antes: Q1800</p>
+        <p class="price">Ahora: Q1299.99</p>
+        <button class="btn">Comprar Oferta</button>
+      </div>
+    </div>
+
+    <!-- OFERTA 4 -->
+    <div class="card">
+      <img src="img/demonslayer.jpg">
+      <div class="info">
+        <h3>🩸 Demon Slayer Set</h3>
+        <p>Tanjiro + Nezuko + Zenitsu</p>
+        <p class="price">Antes: Q1600</p>
+        <p class="price">Ahora: Q999.99</p>
+        <button class="btn">Comprar Oferta</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+  </center>
+</section>
+
+  <center>
+
+    <!-- FORMULARIO -->
+    <form action="https://formsubmit.co/familiacardonac1@gmail.com" method="POST">
+
+      <input 
+        type="text" 
+        name="nombre"
+        placeholder="Tu nombre" 
+        required
+        style="padding:10px;width:300px;border-radius:10px;border:none;">
+      <br><br>
+
+      <input 
+        type="email" 
+        name="correo"
+        placeholder="Tu correo" 
+        required
+        style="padding:10px;width:300px;border-radius:10px;border:none;">
+      <br><br>
+
+      <textarea 
+        name="mensaje"
+        placeholder="Mensaje" 
+        required
+        style="padding:10px;width:300px;height:100px;border-radius:10px;border:none;"></textarea>
+      <br><br>
+
+      <!-- CONFIGURACIONES -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- REDIRECCION -->
+      <input type="hidden" name="_next" value="gracias.html">
+
+      <button class="btn" type="submit">Enviar</button>
+
+    </form>
+
+    <br><br>
+
+    <!-- BOTON WHATSAPP -->
+    <a href="https://wa.me/+502 3283 0239" target="_blank">
+      <button class="btn">
+        💬 Hablar por WhatsApp
+      </button>
+    </a>
+
+<!-- CARRITO -->
+<div id="carrito">
+  <h2>🛒 Carrito</h2>
+
+  <ul id="lista-carrito"></ul>
+
+  <p id="total">Total: Q0</p>
+
+  <button class="btn" onclick="comprar()">Finalizar Compra</button>
+</div>
+
+<footer>
+  <p>©️ 2026 Otaku Figures Shop 💜</p>
+</footer>
+
+
+<script>
+
+  let total = 0;
+
+  function agregarCarrito(nombre, precio){
+
+    const lista = document.getElementById("lista-carrito");
+
+    const item = document.createElement("li");
+
+    item.textContent = nombre + " - Q" + precio;
+
+    lista.appendChild(item);
+
+    total += precio;
+
+    document.getElementById("total").textContent = "Total: Q" + total;
+  }
+
+  function comprar(){
+
+    if(total === 0){
+      alert("Tu carrito está vacío");
+    }else{
+      alert("✅ Compra realizada con éxito por Q" + total);
+      location.reload();
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
